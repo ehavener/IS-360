@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Table 1</title>
+  <meta name="description" content="An example page.">
+</head>
+<style>
+  section table {
+    font-family: sans-serif;
+    width: 100vw;
+    max-width: 1000px;
+  }
+
+  section thead tr:nth-child(1) th:nth-child(1) {
+    width: 20%;
+    vertical-align: top;
+    text-indent: 45%;
+  }
+
+  section tbody td:nth-child(1) {
+    width: 20%;
+  }
+
+  section tbody td:nth-child(2) {
+    width: 20%;
+  }
+
+  section tbody tr:nth-child(1) td {
+    background-color: lightgrey;
+  }
+
+  section tbody td:nth-child(n+3):nth-child(-n+8) {
+    width: 10%;
+    text-align: center;
+  }
+</style>
+
+<body>
+  <header></header>
+  <nav>
+    <hr/>
+    <table>
+      <caption>Pages</caption>
+      <tbody>
+        <tr>
+          <td>
+            <a href="index.html">Index</a>
+          </td>
+          <td>
+            <a href="ReferenceManual.html">Reference Manual</a>
+          </td>
+          <td>
+            <a href="Table1.html">Table 1</a>
+          </td>
+          <td>
+            <a href="Table2.html">Table 2</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr/>
+  </nav>
+  <section>
+    <table>
+      <colgroup>
+        <col colspan="1">
+        <col colspan="1">
+        <col colspan="1">
+        <col colspan="1">
+        <col colspan="1">
+        <col colspan="1">
+        <col colspan="1">
+        <col colspan="1">
+        <col colspan="1">
+        <col colspan="1">
+      </colgroup>
+      <thead>
+        <tr>
+          <th colspan="2" rowspan="2">Substrates Reaction<sup>&minus;1</sup></th>
+          <th colspan="2">&minus;19 &deg;C
+            <hr>
+          </th>
+          <th colspan="2">&plus;25 &deg;C
+            <hr>
+          </th>
+          <th colspan="2">&plus;122 &deg;C
+            <hr>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="1">1 atm</th>
+          <th colspan="1">1000 atm</th>
+          <th colspan="1">1 atm</th>
+          <th colspan="1">1000 atm</th>
+          <th colspan="1">1 atm</th>
+          <th>1000 atm</th>
+        </tr>
+        <tr>
+          <th colspan="6">
+            <hr>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="10"><strong>A</strong></td>
+        </tr>
+        <tr>
+          <td>H<sub>2</sub>&minus;CO <sub>2</sub></td>
+          <td>4</td>
+          <td>11.3</td>
+          <td>10.3</td>
+          <td>18.1</td>
+          <td>17.1</td>
+          <td>42.6</td>
+          <td>41.7</td>
+        </tr>
+        <tr>
+          <td>CO</td>
+          <td>4</td>
+          <td>ND</td>
+          <td><strong>&minus;13.7</strong></td>
+          <td>ND</td>
+          <td>ND</td>
+          <td>ND</td>
+          <td>ND</td>
+        </tr>
+        <tr>
+          <td>CO &plus; H<sub>2</sub></td>
+          <td>2</td>
+          <td>ND</td>
+          <td>ND</td>
+          <td>&minus;1.28</td>
+          <td>ND</td>
+          <td>ND</td>
+          <td>ND</td>
+        </tr>
+        <tr>
+          <td>Formate</td>
+          <td>4</td>
+          <td>6.00</td>
+          <td>5.62</td>
+          <td>10.7</td>
+          <td>10.4</td>
+          <td>27.9</td>
+          <td>27.5</td>
+        </tr>
+        <tr>
+          <td>Formate &plus; H<sub>2</sub></td>
+          <td>2</td>
+          <td>12.1</td>
+          <td>10.8</td>
+          <td>23.1</td>
+          <td>21.8</td>
+          <td>62.9</td>
+          <td>61.6</td>
+        </tr>
+        <tr>
+          <td>Lactate</td>
+          <td>2</td>
+          <td><strong>&minus;49.8</strong></td>
+          <td><strong>&minus;49.3</strong></td>
+          <td><strong>&minus;50.5</strong></td>
+          <td><strong>&minus;50.0</strong></td>
+          <td><strong>&minus;53.0</strong></td>
+          <td><strong>&minus;52.5</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</body>
+
+</html>
