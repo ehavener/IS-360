@@ -6,6 +6,171 @@
   <meta charset="utf-8">
   <title>Table 2</title>
   <meta name="description" content="An example page.">
+  <style>
+    html {
+      font-family: sans-serif;
+      font-size: 12px;
+    }
+
+    @media (min-width: 650px) {
+      html {
+        font-size: calc(12px + 4 * ((100vw - 320px) / 680));
+      }
+    }
+
+    @media (min-width: 1200px) {
+      html {
+        font-size: 16px;
+      }
+    }
+
+    div:not(.grid) {
+      padding: .5em 1.5em;
+    }
+
+    section {
+      max-height: 1000px;
+      padding: 3em;
+    }
+
+    .details.grid {
+      display: grid;
+      align-items: stretch;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 2fr;
+      grid-gap: 10px;
+      margin: 10px;
+      grid-template-areas: "detailsHeader detailsHeader detailsHeader" "temperature stats info";
+    }
+
+    @media (max-width: 650px) {
+      .details.grid {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: "detailsHeader" "temperature" "stats" "info";
+      }
+    }
+
+    .forecast.grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 2fr;
+      grid-gap: 10px;
+      margin: 10px;
+      grid-template-areas: "forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader" "forecast forecast forecast forecast forecast forecast forecast forecast forecast";
+
+    }
+
+    @media (max-width: 1200px) {
+      .forecast.grid {
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 2fr 2fr;
+        grid-template-areas: "forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader" "forecast forecast forecast forecast forecast" "forecast forecast forecast forecast forecast";
+      }
+    }
+
+    @media (max-width: 650px) {
+      .forecast.grid {
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 2fr 2fr 2fr;
+        grid-template-areas: "forecastHeader forecastHeader forecastHeader" "forecast forecast forecast" "forecast forecast forecast" "forecast forecast forecast";
+      }
+    }
+
+    .grid {
+      box-shadow: 1px 4px 10px .5px rgba(0, 0, 0, .1);
+      border-radius: 4px;
+    }
+
+    .detailsHeader,
+    .forecastHeader {
+      padding: .5em;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      box-shadow: 0px -10px 20px .3px rgba(150, 150, 150, .1) inset;
+      background-color: #EAEAEA;
+    }
+
+    .details tr td:first-of-type {
+      text-align: right;
+    }
+
+    .detailsHeader {
+      grid-area: detailsHeader;
+    }
+
+    .detailsHeader a,
+    .forecastHeader a {
+      text-decoration: none;
+    }
+
+    .temperature {
+      grid-area: temperature;
+    }
+
+    .temperature h2 {
+      font-size: 4.5rem;
+      margin: 0;
+    }
+
+    .temperature h3 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .temperature h4 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .stats {
+      grid-area: stats;
+    }
+
+    .info {
+      grid-area: info;
+    }
+
+    .info ul {
+      padding-left: 0;
+    }
+
+    .info li {
+      list-style: none;
+
+    }
+
+    .forecastHeader {
+      grid-area: forecastHeader;
+    }
+
+    .day {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      align-items: stretch;
+    }
+
+    .forecast .day .clear {
+      background-image: url("http://i.cubeupload.com/RK0rIp.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 40px;
+      flex: 2;
+    }
+
+    .forecast .day .sunny {
+      background-image: url("http://i.cubeupload.com/r38Gvn.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 40px;
+      flex: 2;
+    }
+  </style>
 </head>
 
 <body>
@@ -13,7 +178,7 @@
     <nav>
       <hr/>
       <table>
-        <caption>Pages</caption>
+        <caption id="null">Pages</caption>
         <tr>
           <td>
             <a href="index.html">Index</a>
@@ -78,21 +243,18 @@
       <div class="info">
         <ul>
           <li><strong>More Information:</strong></li>
-          <a href="#">
-            <li>Local Forecast Office</li>
-          </a>
-          <a href="#">
-            <li>More Local Wx</li>
-          </a>
-          <a href="#">
-            <li>3 Day History</li>
-          </a>
-          <a href="#">
-            <li>Mobile Weather</li>
-          </a>
-          <a href="#">
-            <li>Hourly Weather Forecast</li>
-          </a>
+          <li><a href="#null">
+            Local Forecast Office</a></li>
+          <li><a href="#null">
+            More Local Wx
+          </a></li>
+          <li><a href="#null">
+            3 Day History
+          </a></li>
+          <li><a href="#null">
+            Mobile Weather</a></li>
+          <li><a href="#null">
+            Hourly Weather Forecast</a></li>
         </ul>
       </div>
     </div>
@@ -159,172 +321,7 @@
       </div>
     </div>
   </section>
+  <img src="./Table2.PNG"></img>
 </body>
-
-<style>
-  html {
-    font-family: sans-serif;
-    font-size: 12px;
-  }
-
-  @media (min-width: 650px) {
-    html {
-      font-size: calc(12px + 4 * ((100vw - 320px) / 680));
-    }
-  }
-
-  @media (min-width: 1200px) {
-    html {
-      font-size: 16px;
-    }
-  }
-
-  div:not(.grid) {
-    padding: .5em 1.5em;
-  }
-
-  section {
-    max-height: 1000px;
-    padding: 3em;
-  }
-
-  .details.grid {
-    display: grid;
-    align-items: stretch;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
-    grid-gap: 10px;
-    margin: 10px;
-    grid-template-areas: "detailsHeader detailsHeader detailsHeader" "temperature stats info";
-  }
-
-  @media (max-width: 650px) {
-    .details.grid {
-      grid-template-columns: auto;
-      grid-template-rows: auto;
-      grid-template-areas: "detailsHeader" "temperature" "stats" "info";
-    }
-  }
-
-  .forecast.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
-    grid-gap: 10px;
-    margin: 10px;
-    grid-template-areas: "forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader" "forecast forecast forecast forecast forecast forecast forecast forecast forecast";
-
-  }
-
-  @media (max-width: 1200px) {
-    .forecast.grid {
-      grid-template-columns: auto;
-      grid-template-rows: 1fr 2fr 2fr;
-      grid-template-areas: "forecastHeader forecastHeader forecastHeader forecastHeader forecastHeader" "forecast forecast forecast forecast forecast" "forecast forecast forecast forecast forecast";
-    }
-  }
-
-  @media (max-width: 650px) {
-    .forecast.grid {
-      grid-template-columns: auto;
-      grid-template-rows: 1fr 2fr 2fr 2fr;
-      grid-template-areas: "forecastHeader forecastHeader forecastHeader" "forecast forecast forecast" "forecast forecast forecast" "forecast forecast forecast";
-    }
-  }
-
-  .grid {
-    box-shadow: 1px 4px 10px .5px rgba(0, 0, 0, .1);
-    border-radius: 4px;
-  }
-
-  .detailsHeader,
-  .forecastHeader {
-    padding: .5em;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-    box-shadow: 0px -10px 20px .3px rgba(150, 150, 150, .1) inset;
-    background-color: #EAEAEA;
-  }
-
-  .details tr td:first-of-type {
-    text-align: right;
-  }
-
-  .detailsHeader {
-    grid-area: detailsHeader;
-  }
-
-  .detailsHeader a,
-  .forecastHeader a {
-    text-decoration: none;
-  }
-
-  .temperature {
-    grid-area: temperature;
-  }
-
-  .temperature h2 {
-    font-size: 4.5rem;
-    margin: 0;
-  }
-
-  .temperature h3 {
-    font-size: 2rem;
-    margin: 0;
-  }
-
-  .temperature h4 {
-    font-size: 1.5rem;
-    margin: 0;
-  }
-
-  .stats {
-    grid-area: stats;
-  }
-
-  .info {
-    grid-area: info;
-  }
-
-  .info ul {
-    padding-left: 0;
-  }
-
-  .info li {
-    list-style: none;
-
-  }
-
-  .forecastHeader {
-    grid-area: forecastHeader;
-  }
-
-  .day {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    align-items: stretch;
-  }
-
-  .forecast .day .clear {
-    background-image: url("http://i.cubeupload.com/RK0rIp.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 40px;
-    flex: 2;
-  }
-
-  .forecast .day .sunny {
-    background-image: url("http://i.cubeupload.com/r38Gvn.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 40px;
-    flex: 2;
-  }
-</style>
 
 </html>

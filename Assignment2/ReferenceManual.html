@@ -6,11 +6,51 @@
   <meta charset="utf-8">
   <title>Reference Manual, &lt;a&gt; Tag</title>
   <meta name="description" content="An example page.">
+  <style>
+    article {
+      max-width: 80ch;
+      word-wrap: break-word;
+    }
+
+    dt {
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    dd {
+      display: list-item;
+      list-style-type: none;
+      margin-left: 60px;
+    }
+
+    dl>dt+dd,
+    dl>dt+dd+dd {
+      list-style-type: none;
+      margin-left: 30px;
+    }
+
+    dl>dt+dd:before,
+    dl>dt+dd+dd:before {
+      content: "\2013\00a0";
+      margin-left: -15px;
+    }
+
+    code {
+      background-color: rgba(176, 196, 222, .4);
+      display: inline-block;
+      margin: 3px;
+      padding: 3px;
+    }
+
+    iframe {
+      height: 30px;
+    }
+  </style>
 </head>
 
 <body>
-  <heaeder>
-    <nav aria-labelledby="Site Navigation">
+  <header>
+    <nav aria-label="Site Navigation">
       <hr/>
       <table>
         <caption>Pages</caption>
@@ -31,8 +71,8 @@
       </table>
       <hr/>
     </nav>
-  </heaeder>
-  <nav aria-labelledby="Article Navigation">
+  </header>
+  <nav aria-label="Article Navigation">
     <table>
       <caption>Bookmarks</caption>
       <tr>
@@ -114,68 +154,29 @@
         <dd><code>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank"
           title="Open in new context"&gt;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a&lt;/a&gt;</code></dd>
         <dt>
-          <iframe src="data:text/html, <em><a href='http://www.unr.edu/' target='_self' title='Open inside iframe' >./ReferenceManual.html</a></em>">
+          <iframe src="data:text/html,&lt;em&gt;&lt;a href='http://www.unr.edu/' target='_self'title='Open%20inside%20iframe'&gt;./ReferenceManual.html&lt;/a&gt;&lt;/em&lt;">
           </iframe>
         </dt>
         <dd>An absolute reference to an external webpage from within an <code>&lt;iframe&gt;</code>.</dd>
         <dd>A target attribute of <code>_self</code> within an <code>&lt;iframe&gt;</code>          opens the URL within itself.
         </dd>
         <dd><code>&lt;iframe src="data:text/html, &lt;a href='http://www.unr.edu/' target='_self' title='Open inside iframe' &gt;./ReferenceManual.html&lt;/a&gt;">
-        </iframe></code></dd>
+         &lt;/iframe&gt;</code></dd>
         <dt>
-          <iframe src="data:text/html, <em><a href='http://www.unr.edu/' target='_top' title='Open in parent' >./ReferenceManual.html</a></em>">
+          <iframe src="data:text/html,&lt;em&gt;&lt;a href='http://www.unr.edu/' target='_top' title='Open%20in%20parent' >./ReferenceManual.html&lt;/a&gt;&lt;/em&gt;">
           </iframe>
         </dt>
         <dd>An absolute reference to an external webpage from within an <code>&lt;iframe&gt;</code>.</dd>
         <dd>A target attribute of <code>_top</code> within an <code>&lt;iframe&gt;</code>          opens the URL in the highest order browsing context.</dd>
         <dd><code>&lt;iframe src="data:text/html, &lt;a href='http://www.unr.edu/'
-          target='_top' title='Open in parent' &gt;./ReferenceManual.html&lt;/a&gt;"&gt;</iframe>
+          target='_top' title='Open in parent' &gt;./ReferenceManual.html&lt;/a&gt;"&gt;&lt;/iframe&gt;
           </code>
         </dd>
       </dl>
     </section>
   </article>
+  <p>I'm not sure what's wrong here as I escaped all oth the less thans...</p>
+  <img src="./ReferenceManual.PNG"></img>
 </body>
-
-<style>
-  article {
-    max-width: 80ch;
-    word-wrap: break-word;
-  }
-
-  dt {
-    margin-top: 10px;
-    font-size: 15px;
-  }
-
-  dd {
-    display: list-item;
-    list-style-type: none;
-    margin-left: 60px;
-  }
-
-  dl>dt+dd,
-  dl>dt+dd+dd {
-    list-style-type: none;
-    margin-left: 30px;
-  }
-
-  dl>dt+dd:before,
-  dl>dt+dd+dd:before {
-    content: "\2013\00a0";
-    margin-left: -15px;
-  }
-
-  code {
-    background-color: rgba(176, 196, 222, .4);
-    display: inline-block;
-    margin: 3px;
-    padding: 3px;
-  }
-
-  iframe {
-    height: 30px;
-  }
-</style>
 
 </html>
