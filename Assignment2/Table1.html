@@ -7,62 +7,33 @@
   <title>Table 1</title>
   <meta name="description" content="An example page.">
 </head>
-<style>
-  section table {
-    font-family: sans-serif;
-    width: 100vw;
-    max-width: 1000px;
-  }
-
-  section thead tr:nth-child(1) th:nth-child(1) {
-    width: 20%;
-    vertical-align: top;
-    text-indent: 45%;
-  }
-
-  section tbody td:nth-child(1) {
-    width: 20%;
-  }
-
-  section tbody td:nth-child(2) {
-    width: 20%;
-  }
-
-  section tbody tr:nth-child(1) td {
-    background-color: lightgrey;
-  }
-
-  section tbody td:nth-child(n+3):nth-child(-n+8) {
-    width: 10%;
-    text-align: center;
-  }
-</style>
 
 <body>
-  <header></header>
-  <nav>
-    <hr/>
-    <table>
-      <caption>Pages</caption>
-      <tbody>
-        <tr>
-          <td>
-            <a href="index.html">Index</a>
-          </td>
-          <td>
-            <a href="ReferenceManual.html">Reference Manual</a>
-          </td>
-          <td>
-            <a href="Table1.html">Table 1</a>
-          </td>
-          <td>
-            <a href="Table2.html">Table 2</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <hr/>
-  </nav>
+  <header>
+    <nav>
+      <hr/>
+      <table>
+        <caption>Pages</caption>
+        <tbody>
+          <tr>
+            <td>
+              <a href="index.html">Index</a>
+            </td>
+            <td>
+              <a href="ReferenceManual.html">Reference Manual</a>
+            </td>
+            <td>
+              <a href="Table1.html">Table 1</a>
+            </td>
+            <td>
+              <a href="Table2.html">Table 2</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr/>
+    </nav>
+  </header>
   <section>
     <table>
       <colgroup>
@@ -99,7 +70,7 @@
           <th>1000 atm</th>
         </tr>
         <tr>
-          <th colspan="6">
+          <th colspan="8">
             <hr>
           </th>
         </tr>
@@ -172,5 +143,36 @@
     </table>
   </section>
 </body>
+
+<style>
+  section table {
+    font-family: sans-serif;
+    width: 100vw;
+    max-width: 1000px;
+  }
+
+  section thead tr:nth-child(1) th:nth-child(1) {
+    width: 20%;
+    vertical-align: top;
+    text-indent: 45%;
+  }
+
+  section tbody td:nth-child(1) {
+    width: 20%;
+  }
+
+  section tbody td:nth-child(2) {
+    width: 20%;
+  }
+
+  section tbody tr:nth-child(1) td {
+    background-color: lightgrey;
+  }
+
+  section tbody td:nth-child(n+3):nth-child(-n+8) {
+    width: 10%;
+    text-align: center;
+  }
+</style>
 
 </html>

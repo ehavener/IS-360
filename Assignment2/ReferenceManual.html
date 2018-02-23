@@ -4,28 +4,46 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Reference Manual,
-    <code><&lt;>a&gt;</code> Tag</title>
+  <title>Reference Manual, &lt;a&gt; Tag</title>
   <meta name="description" content="An example page.">
 </head>
 
 <body>
-  <nav>
-    <hr/>
+  <heaeder>
+    <nav aria-labelledby="Site Navigation">
+      <hr/>
+      <table>
+        <caption>Pages</caption>
+        <tr>
+          <td>
+            <a href="index.html">Index</a>
+          </td>
+          <td>
+            <a href="ReferenceManual.html">Reference Manual</a>
+          </td>
+          <td>
+            <a href="Table1.html">Table 1</a>
+          </td>
+          <td>
+            <a href="Table2.html">Table 2</a>
+          </td>
+        </tr>
+      </table>
+      <hr/>
+    </nav>
+  </heaeder>
+  <nav aria-labelledby="Article Navigation">
     <table>
-      <caption>Pages</caption>
+      <caption>Bookmarks</caption>
       <tr>
         <td>
-          <a href="index.html">Index</a>
+          <a href="#abstract">Abstract</a>
         </td>
         <td>
-          <a href="ReferenceManual.html">Reference Manual</a>
+          <a href="#details">Details</a>
         </td>
         <td>
-          <a href="Table1.html">Table 1</a>
-        </td>
-        <td>
-          <a href="Table2.html">Table 2</a>
+          <a href="#examples">Examples</a>
         </td>
       </tr>
     </table>
@@ -36,24 +54,131 @@
       <code>&lt;a&gt;</code> Tag</h1>
     <section id="abstract">
       <h2>Abstract</h2>
-      <p>write a short paragraph or two that summarizes the purpose of the anchor tag.
-        Mention how it is used to create links to other pages and bookmarks.</p>
+      <p>The anchor tag is used to link to both internal and external content. It can
+        explicitly direct to a websites URL, or it can direct to an element via it's
+        ID tag. It can also link directly to files hosted at a URL.</p>
+      <p>Additionally, it can use protocols other than http. An anchor tag can be used
+        to open a connection over SSH, prompt the client to create an email, open
+        an FTP connection, and more. The result of clicking these links is dependent
+        on how the user has configured their browser to treat such protocols.</p>
     </section>
     <section id="details">
       <h2>Details</h2>
-      <ul>
-        <li>create a bulleted list that describes the purpose of the attributes applicable
-          to the anchor tag.</li>
-        <li></li>
-        <li></li>
-      </ul>
+      <dl>
+        <dt><code>href</code></dt>
+        <dd>The URL or ID that the link will access.</dd>
+        <dd>Can be of any browser supported protocol.</dd>
+        <dt><code>target</code></dt>
+        <dd>The location where the URL will be opened within the browser environment.</dd>
+        <dd>The browser environment consists of browsing contexts, each of which could
+          be a window, tab, or
+          <code>&lt;iframe&gt;</code></dd>
+        <dd><code>_self:</code> default, loads the URL in the current context(normally
+          window or iframe).</dd>
+        <dd><code>_blank:</code> loads the URL in a new tab or possibly window (browser
+          dependent)
+        </dd>
+        <dd><code>_parent:</code> loads the url and the parent context, e.g. if redirecting
+          the browser from within an iframe</dd>
+        <dd><code>_top:</code> loads the URL to the topmost parent's browsing context</dd>
+        <dt><code>rel</code></dt>
+        <dd>A list of 'link type' strings that defines the relationship between the current
+          page and the linked content. </dd>
+        <dd>This is often used with the value <code>noopener noreferer</code> to prevent
+          an external website from hijacking the browser context.</dd>
+        <dt><code>title</code></dt>
+        <dd>The string displayed then the anchor tag is hovered over.</dd>
+      </dl>
     </section>
     <section id="examples">
       <h2>Examples</h2>
-      create three examples that demonstrate the use of absolute and relative references.
-      One of your examples should use the target attribute. Feel free to create additional
-      examples as you see fit.</section>
+      <dl>
+        <dt>
+          <em><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" title="Open here">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a</a></em>
+        </dt>
+        <dd>An absolute reference to an external webpage.</dd>
+        <dd>Loads in current context by default.</dd>
+        <dd><code>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" title="Open here"&gt;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a&lt;/a&gt;</code></dd>
+        <dt>
+          <em><a href="./ReferenceManual.html" title="Open here">./Table1</a></em>
+        </dt>
+        <dd>A relative reference to a local webpage.</dd>
+        <dd>Loads in current context by default.</dd>
+        <dd><code>&lt;a href="./ReferenceManual.html" title="Open here"&gt;./Table1&lt;/a&gt;</code></dd>
+        <dt>
+          <em><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank"
+              title="Open in new context">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a</a></em>
+        </dt>
+        <dd>An absolute reference to an external webpage.</dd>
+        <dd>A target attribute of <code>_blank</code> opens the URL in a new context.</dd>
+        <dd><code>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank"
+          title="Open in new context"&gt;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a&lt;/a&gt;</code></dd>
+        <dt>
+          <iframe src="data:text/html, <em><a href='http://www.unr.edu/' target='_self' title='Open inside iframe' >./ReferenceManual.html</a></em>">
+          </iframe>
+        </dt>
+        <dd>An absolute reference to an external webpage from within an <code>&lt;iframe&gt;</code>.</dd>
+        <dd>A target attribute of <code>_self</code> within an <code>&lt;iframe&gt;</code>          opens the URL within itself.
+        </dd>
+        <dd><code>&lt;iframe src="data:text/html, &lt;a href='http://www.unr.edu/' target='_self' title='Open inside iframe' &gt;./ReferenceManual.html&lt;/a&gt;">
+        </iframe></code></dd>
+        <dt>
+          <iframe src="data:text/html, <em><a href='http://www.unr.edu/' target='_top' title='Open in parent' >./ReferenceManual.html</a></em>">
+          </iframe>
+        </dt>
+        <dd>An absolute reference to an external webpage from within an <code>&lt;iframe&gt;</code>.</dd>
+        <dd>A target attribute of <code>_top</code> within an <code>&lt;iframe&gt;</code>          opens the URL in the highest order browsing context.</dd>
+        <dd><code>&lt;iframe src="data:text/html, &lt;a href='http://www.unr.edu/'
+          target='_top' title='Open in parent' &gt;./ReferenceManual.html&lt;/a&gt;"&gt;</iframe>
+          </code>
+        </dd>
+      </dl>
+    </section>
   </article>
 </body>
+
+<style>
+  article {
+    max-width: 80ch;
+    word-wrap: break-word;
+  }
+
+  iframe {
+    height: 30px;
+  }
+
+  dd {
+    display: list-item;
+    list-style-type: none;
+    margin-left: 60px;
+  }
+
+  dl>dt+dd,
+  dl>dt+dd+dd {
+    list-style-type: none;
+    margin-left: 30px;
+  }
+
+  dl>dt+dd:before,
+  dl>dt+dd+dd:before {
+    content: "\2013\00a0";
+    margin-left: -15px;
+  }
+
+  dt {
+    margin-top: 10px;
+  }
+
+  code {
+    background-color: LightSteelBlue;
+    display: inline-block;
+    margin: 3px;
+    padding: 3px;
+  }
+
+  dt {
+    font-size: 15px;
+  }
+</style>
 
 </html>
