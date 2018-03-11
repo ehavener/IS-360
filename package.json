@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "prettier": "^1.11.1",
+    "stylelint": "^9.1.1",
+    "stylelint-config-idiomatic-order": "^5.0.0",
+    "stylelint-config-recommended": "^2.1.0"
+  }
+}
