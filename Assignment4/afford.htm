@@ -5,41 +5,80 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Afford | Assignment 4</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="/">Assignment 4</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link active" href="./index.htm">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./afford.htm">Afford</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./compoundInterest.htm">Compound Interest</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./payment.htm">Payment</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="/">
+      <img src="images/unr-block-logo.png">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link active" href="./index.htm">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./afford.htm">Afford</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./compoundInterest.htm">Compound Interest</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./payment.htm">Payment</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<form name="afford" onsubmit="return false">
+  <label for="monthlyIncome">Monthly income:
+    <input type="number" name="monthlyIncome" />
+  </label>
+  <label for="totalExpenses">Total expenses:
+    <input type="number" name="totalExpenses" />
+  </label>
+  <input type="submit" name="Submit" onclick="calculate();" />
+  <label id="output">$0</label>
+</form>
+
+<script>
+
+  function calculate() {
+    var monthlyIncome = 0;
+    var totalExpenses = 0;
+    var maxAffordablePayment = 0;
+
+    monthlyIncome = document.afford.monthlyIncome.value;
+    totalExpenses = document.afford.totalExpenses.value;
+
+    monthlyIncome = .29 * monthlyIncome;
+    totalExpenses = .39 * totalExpenses;
+
+    if (monthlyIncome > totalExpenses) {
+      maxAffordablePayment = monthlyIncome;
+    } else {
+      maxAffordablePayment = totalExpenses;
+    }
+
+    document.getElementById("output").textContent = "$" + maxAffordablePayment;
+    return false;
+  }
+
+</script>
+<!--
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+-->
 </body>
 
 </html>
