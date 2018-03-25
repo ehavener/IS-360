@@ -1,0 +1,19 @@
+body {
+  background-color: #FFFFFF;
+}
+
+nav {
+  background-color: #003366;
+}
+
+.navbar-nav a {
+  color: white;
+}
+
+.navbar-nav a:hover {
+  color: #003366;
+}
+
+.navbar-nav li:hover {
+  /*background-color: white; ??? */
+}
