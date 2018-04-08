@@ -7,49 +7,45 @@
   --quarter-spanish-white: #f5f0db;
   --emperor: #524549;
   --comet: #585a73;
-  --snuff: #eedff2;
+  --snuff: #fff;
   --scooter: #3dadd9;
   --pumice: #d7d9d7;
+  --red-berry: rgb(205, 61, 61);
+  --oxford-blue: rgb(48, 58, 70);
+  --bunker: rgb(28, 37, 48);
+  --raven: rgb(123, 127, 136);
+  --french-gray: rgb(215, 215, 217);
+  --notWhite: rgb(250, 250, 250);
+  --github-black: #24292e;
 }
 
 html {
-  /* 1rem = 10px on mobile */
-  font: 62.5% Tahoma, sans-serif;
-}
-
-/* responsive font sizinf */
-@media (min-width: 600px) {
-  html {
-    font-size: 70%;
-  }
-}
-
-@media (min-width: 900px) {
-  html {
-    font-size: 78.5%;
-  }
+  font: 100% Tahoma, sans-serif;
 }
 
 body,
 p {
   margin-top: 0;
-
-  /* 14 ÷ $rembase ≈ 14px */
-  font: 1.4rem Tahoma, sans-serif;
+  font: 1rem Tahoma, sans-serif;
 }
 
 h1 {
   margin-top: 0;
+  color: var(--red-berry);
+  font: 800 1.5rem Tahoma, sans-serif;
+}
 
-  /* 26 ÷ $rembase ≈ 26px */
-  font: 800 2.6rem Tahoma, sans-serif;
+h1:first-letter {
+  font-size: 3.75rem;
 }
 
 h2 {
   margin-top: 0;
+  font: 700 1.3rem Tahoma, sans-serif;
+}
 
-  /* 24 ÷ $rembase ≈ 24px */
-  font: 700 2.4rem Tahoma, sans-serif;
+h2:first-letter {
+  font-size: 2.6rem;
 }
 
 h3 {
@@ -59,71 +55,209 @@ h3 {
   font: 700 1.8rem Tahoma, sans-serif;
 }
 
-main {
-  /*max-width: 1024px;*/
+section img {
+  max-width: 100%;
 }
 
-body {
+img {
+  max-width: 30%;
+  max-height: 100%;
 }
 
-main {
+.fifty-hotfix img {
+  max-width: 48%;
 }
 
-body.container {
-  width: 1024px;
+.img-wrapper img {
+  max-width: 100%;
+}
+
+main.container {
+  max-width: 1024px;
 }
 
 nav a {
-  background-color: var(--wine-berry);
-  border-color: var(--wine-berry);
+  max-height: 55px !important;
+  padding-bottom: 0 !important;
+  background-color: var(--bunker);
+  border-color: var(--bunker);
   border-radius: 0 !important;
   border-style: solid;
   border-width: 5px 5px 5px 5;
   color: var(--quarter-spanish-white);
   line-height: 30px;
+  text-align: center;
 }
 
 nav a:hover {
   background-color: transparent;
-  color: var(--wine-berry);
+  color: var(--french-gray);
 }
 
+header {
+  position: static;
+}
+
+.nav {
+  flex-wrap: nowrap;
+  margin: 0;
+}
+
+.nav a.nav-link {
+  min-width: 85px;
+}
+
+body nav a:nth-of-type(1) {
+  border-left-width: calc(50vw - 12.9rem);
+}
+
+body nav a:nth-of-type(4) {
+  border-right-width: calc(50vw - 12.9rem);
+}
+
+/* Index Page */
+
 body.index {
-  background-color: var(--quarter-spanish-white);
-  color: var(--wine-berry);
+  background-color: rgb(150, 40, 41);
+  color: var(--notWhite);
+}
+
+body.index::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('../images/hero-bg-reno-arch.jpg');
+  background-position: center;
+  background-size: cover;
+  content: '';
+  opacity: 0.3;
+}
+
+body.index nav a {
+  background-color: var(--notWhite);
+  border-color: var(--notWhite);
+  color: var(--red-berry);
 }
 
 body.index nav a:nth-of-type(1) {
   background-color: transparent;
-  color: var(--wine-berry);
+  color: var(--notWhite);
 }
 
+body.index nav a:hover {
+  background-color: transparent;
+  color: var(--notWhite);
+}
+
+/* Page 1 */
+
 body.page-two {
-  background-color: var(--pumice);
-  color: var(--wine-berry);
+  background-color: var(--french-gray);
+  color: var(--bunker);
+}
+
+body.page-two nav a {
+  background-color: var(--bunker);
+  border-color: var(--bunker);
+  color: var(--french-gray);
 }
 
 body.page-two nav a:nth-of-type(2) {
   background-color: transparent;
-  color: var(--wine-berry);
+  color: var(--bunker);
 }
 
-body.page-three {
-  background-color: var(--cashmere);
-  color: var(--wine-berry);
+body.page-two nav a:hover {
+  background-color: transparent;
+  color: var(--bunker);
 }
+
+body nav a:nth-of-type(2)::after {
+  position: relative;
+  top: -14px;
+  left: 0;
+  margin: 0;
+  content: '\A  Introduction';
+  font-size: 0.75rem;
+  line-height: 0;
+  white-space: pre;
+}
+
+/* Page 3 */
 
 body.page-three nav a:nth-of-type(3) {
   background-color: transparent;
-  color: var(--wine-berry);
+  color: var(--pumice);
 }
+
+body.page-three nav a:hover {
+  background-color: transparent;
+  color: var(--pumice);
+}
+
+body.page-three {
+  background-color: var(--oxford-blue);
+  color: var(--pumice);
+}
+
+body.page-three nav a {
+  background-color: var(--pumice);
+  border-color: var(--pumice);
+  color: var(--oxford-blue);
+}
+
+body nav a:nth-of-type(3)::after {
+  position: relative;
+  top: -13px;
+  left: 0;
+  margin: 0;
+  content: '\A Details';
+  font-size: 0.75rem;
+  line-height: 0;
+  white-space: pre;
+}
+
+/* Page 4 */
 
 body.page-four {
   background-color: var(--snuff);
-  color: var(--wine-berry);
+  color: var(--github-black);
+}
+
+body.page-four nav a {
+  background-color: var(--github-black);
+  border-color: var(--github-black);
+  color: var(--snuff);
+}
+
+body.page-four nav a:hover {
+  background-color: transparent;
+  color: var(--github-black);
 }
 
 body.page-four nav a:nth-of-type(4) {
   background-color: transparent;
-  color: var(--wine-berry);
+  color: var(--github-black);
+}
+
+body nav a:nth-of-type(4)::after {
+  position: relative;
+  top: -13px;
+  left: 0;
+  margin: 0;
+  content: '\A Github Readme';
+  font-size: 0.75rem;
+  line-height: 0;
+  white-space: pre;
+}
+
+footer {
+  padding: 25px 0;
+  margin-top: 50px;
+  background: var(--bunker);
+  color: var(--raven);
+  text-align: center;
 }
