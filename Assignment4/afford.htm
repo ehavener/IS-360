@@ -15,8 +15,8 @@
     <a class="navbar-brand" href="/">
       <img src="images/unr-block-logo.png">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-      aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -41,16 +41,27 @@
 </header>
 <form name="afford" onsubmit="return false">
   <label for="monthlyIncome">Monthly income:
-    <input type="number" name="monthlyIncome" />
+    <input type="number" step="any" name="monthlyIncome" />
   </label>
   <label for="totalExpenses">Total expenses:
-    <input type="number" name="totalExpenses" />
+    <input type="number" step="any" name="totalExpenses" />
   </label>
   <input type="submit" name="Submit" onclick="calculate();" />
   <label id="output">$0</label>
 </form>
 
 <script>
+
+  function round(number, precision) {
+    var shift = function (number, precision, reverseShift) {
+      if (reverseShift) {
+        precision = -precision;
+      }
+      numArray = ("" + number).split("e");
+      return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+    };
+    return shift(Math.round(shift(number, precision, false)), precision, true);
+  } /* taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round */
 
   function calculate() {
     var monthlyIncome = 0;
@@ -61,13 +72,15 @@
     totalExpenses = document.afford.totalExpenses.value;
 
     monthlyIncome = .29 * monthlyIncome;
-    totalExpenses = .39 * totalExpenses;
+    totalExpenses = .39 * (monthlyIncome - totalExpenses);
 
     if (monthlyIncome > totalExpenses) {
-      maxAffordablePayment = monthlyIncome;
-    } else {
       maxAffordablePayment = totalExpenses;
+    } else {
+      maxAffordablePayment = monthlyIncome;
     }
+
+    maxAffordablePayment = round(maxAffordablePayment, 2);
 
     document.getElementById("output").textContent = "$" + maxAffordablePayment;
     return false;

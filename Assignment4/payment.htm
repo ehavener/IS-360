@@ -7,14 +7,19 @@
   <title>Payment | Assignment 4</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="/">Assignment 4</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-        aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -37,9 +42,127 @@
       </div>
     </nav>
   </header>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+  <div class="container-fluid">
+
+    <form name="payment">
+      <br>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <label for="initialLoanAmount" class="col-form-label">Initial Loan Amount</label>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input class="form-control" placeholder="0.00" type="number" min="0.01" step="any"
+              name="initialLoanAmount" required/>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <label for="numberOfPeriods" class="col-form-label">Number of Periods</label>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group">
+            <input class="form-control" placeholder="0" type="number" min="0" name="numberOfPeriods"
+              required/>
+            <div class="input-group-append">
+              <div class="input-group-text">Years</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <label for="annualInterestRate" class="col-form-label">Interest Rate</label>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group">
+            <input class="form-control" type="number" placeholder="0" min="0.01" step="any" name="annualInterestRate"
+              required/>
+            <div class="input-group-append">
+              <div class="input-group-text">% Per Year</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row mb-4">
+        <div class="col-sm-2 offset-3 text-right">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <label class="col-form-label-lg">Payment amount</label>
+        </div>
+        <div class="col-sm-2">
+          <input class="form-control text-left" id="output" type="text" placeholder="$0" readonly>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <script>
+
+    function isNumberKey(evt) {
+      console.log(evt);
+      var charCode = (evt.which) ? evt.which : event.keyCode
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46)
+        return false;
+      return true;
+    }
+
+    // Catch all events related to changes
+    $('input').on('keypress', function (event) {
+      console.log(event);
+      if (!isNumberKey(event.originalEvent)) {
+        return false;
+      }
+      else return true;
+    });
+
+
+
+    function round(number, precision) {
+      var shift = function (number, precision, reverseShift) {
+        if (reverseShift) {
+          precision = -precision;
+        }
+        numArray = ("" + number).split("e");
+        return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+      };
+      return shift(Math.round(shift(number, precision, false)), precision, true);
+    } /* referenced from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round */
+
+    var form = document.payment;
+    form.addEventListener('submit', calculateCompoundInterest, false);
+
+    function calculateCompoundInterest(e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      e.returnValue = false;
+
+      const initialLoanAmount = document.payment.initialLoanAmount.value;
+      const numberOfPeriods = document.payment.numberOfPeriods.value;
+      const annualInterestRate = document.payment.annualInterestRate.value / 100;
+
+      const ratePerPeriod = annualInterestRate / numberOfPeriods
+
+      let payment = (ratePerPeriod * initialLoanAmount) / (1 - Math.pow((1 + ratePerPeriod), -numberOfPeriods));
+
+      payment = round(payment, 2);
+
+      document.getElementById("output").value = '$' + payment;
+      return false;
+    }
+
+
+  </script>
 </body>
 
 </html>
