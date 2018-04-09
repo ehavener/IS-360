@@ -18,7 +18,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="./index.htm">
-        <img src="images/unr-block-logo.png">
+        <img src="images/unr-block-logo.png" alt="UNR Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,8 +58,8 @@
             <div class="input-group-prepend">
               <div class="input-group-text">$</div>
             </div>
-            <input class="form-control" placeholder="0.00" type="number" min="0.01" step="any"
-              name="initialLoanAmount" required/>
+            <input id="initialLoanAmount" class="form-control" placeholder="0.00" type="number"
+              min="0.01" step="any" name="initialLoanAmount" required/>
           </div>
         </div>
       </div>
@@ -69,8 +69,8 @@
         </div>
         <div class="col-sm-2">
           <div class="input-group">
-            <input class="form-control" placeholder="0" type="number" min="0" name="numberOfPeriods"
-              required/>
+            <input id="numberOfPeriods" class="form-control" placeholder="0" type="number" min="0"
+              name="numberOfPeriods" required/>
             <div class="input-group-append">
               <div class="input-group-text">Years</div>
             </div>
@@ -83,8 +83,8 @@
         </div>
         <div class="col-sm-2">
           <div class="input-group">
-            <input class="form-control" type="number" placeholder="0" min="0.01" step="any" name="annualInterestRate"
-              required/>
+            <input id="annualInterestRate" class="form-control" type="number" placeholder="0"
+              min="0.01" step="any" name="annualInterestRate" required/>
             <div class="input-group-append">
               <div class="input-group-text">% Per Year</div>
             </div>
@@ -111,6 +111,7 @@
         </div>
       </div>
     </form>
+    <img src="./images/payment.png" alt="verification">
   </div>
 
 

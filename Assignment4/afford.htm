@@ -18,7 +18,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="./index.htm">
-        <img src="images/unr-block-logo.png">
+        <img src="images/unr-block-logo.png" alt="UNR Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <a class="nav-link" href="./index.htm">Home
+          <li>
+            <a class="nav-link" href="./index.htm">Home
             </a>
           </li>
           <li class="nav-item active">
@@ -56,8 +57,8 @@
             <div class="input-group-prepend">
               <div class="input-group-text">$</div>
             </div>
-            <input class="form-control" placeholder="0.00" type="number" min="0.01" step="any"
-              name="monthlyIncome" required/>
+            <input id="monthlyIncome" class="form-control" placeholder="0.00" type="number" min="0.01"
+              step="any" name="monthlyIncome" required/>
           </div>
         </div>
       </div>
@@ -70,8 +71,8 @@
             <div class="input-group-prepend">
               <div class="input-group-text">$</div>
             </div>
-            <input class="form-control" placeholder="0.00" type="number" min="0" name="totalExpenses"
-              required/>
+            <input id="totalExpenses" class="form-control" placeholder="0.00" type="number" min="0"
+              name="totalExpenses" required/>
           </div>
         </div>
       </div>
@@ -96,7 +97,8 @@
         </div>
       </div>
     </form>
-  </div>
+    <img src="./images/afford.png" alt="verification">
+
   </div>
 
   <script>

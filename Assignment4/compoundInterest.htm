@@ -18,7 +18,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="./index.htm">
-        <img src="images/unr-block-logo.png">
+        <img src="images/unr-block-logo.png" alt="UNR Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <a class="nav-link" href="./index.htm">Home
+          <li>
+            <a class="nav-link" href="./index.htm">Home
             </a>
           </li>
           <li>
@@ -56,8 +57,8 @@
             <div class="input-group-prepend">
               <div class="input-group-text">$</div>
             </div>
-            <input class="form-control" placeholder="0.00" type="number" min="0.01" step="any"
-              name="initialInvestmentAmount" required/>
+            <input id="initialInvestmentAmount" class="form-control" placeholder="0.00" type="number"
+              min="0.01" step="any" name="initialInvestmentAmount" required/>
           </div>
         </div>
       </div>
@@ -67,8 +68,8 @@
         </div>
         <div class="col-sm-2">
           <div class="input-group">
-            <input class="form-control" placeholder="0" type="number" min="0" name="numberOfPeriods"
-              required/>
+            <input id="numberOfPeriods" class="form-control" placeholder="0" type="number" min="0"
+              name="numberOfPeriods" required/>
             <div class="input-group-append">
               <div class="input-group-text">Years</div>
             </div>
@@ -81,8 +82,8 @@
         </div>
         <div class="col-sm-2">
           <div class="input-group">
-            <input class="form-control" type="number" placeholder="0" min="0.01" step="any" name="annualInterestRate"
-              required/>
+            <input id="annualInterestRate" class="form-control" type="number" placeholder="0"
+              min="0.01" step="any" name="annualInterestRate" required/>
             <div class="input-group-append">
               <div class="input-group-text">% Per Year</div>
             </div>
@@ -109,7 +110,8 @@
         </div>
       </div>
     </form>
-  </div>
+    <img src="./images/compoundInterest.png" alt="verification">
+
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
