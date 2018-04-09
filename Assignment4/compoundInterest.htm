@@ -7,28 +7,34 @@
   <title>Compound Interest | Assignment 4</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="/">Assignment 4</a>
+      <a class="navbar-brand" href="./index.htm">
+        <img src="images/unr-block-logo.png">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link active" href="./index.htm">Home
-              <span class="sr-only">(current)</span>
+          <a class="nav-link" href="./index.htm">Home
             </a>
           </li>
-          <li class="nav-item">
+          <li>
             <a class="nav-link" href="./afford.htm">Afford</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./compoundInterest.htm">Compound Interest</a>
+          <li class="nav-item active">
+            <a class="nav-link active" href="./compoundInterest.htm">Compound Interest</a>
+            <span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./payment.htm">Payment</a>
@@ -38,64 +44,72 @@
     </nav>
   </header>
 
-  <form name="compoundInterest">
-    <br>
-    <div class="form-group row">
-      <div class="col-sm-3">
-        <label for="initialInvestmentAmount" class="col-form-label">Initial Investment Amount</label>
-      </div>
-      <div class="col-sm-2">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">$</div>
-          </div>
-          <input class="form-control" placeholder="0.00" type="number" min="0.01" step="any"
-            name="initialInvestmentAmount" required/>
+  <div class="container-fluid">
+    <form name="compoundInterest">
+      <br>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <label for="initialInvestmentAmount" class="col-form-label">Initial Investment Amount</label>
         </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-3">
-        <label for="numberOfPeriods" class="col-form-label">Number of Periods</label>
-      </div>
-      <div class="col-sm-2">
-        <div class="input-group">
-          <input class="form-control" placeholder="0" type="number" min="0" name="numberOfPeriods"
-            required/>
-          <div class="input-group-append">
-            <div class="input-group-text">Years</div>
+        <div class="col-sm-2">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input class="form-control" placeholder="0.00" type="number" min="0.01" step="any"
+              name="initialInvestmentAmount" required/>
           </div>
         </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-3">
-        <label for="annualInterestRate" class="col-form-label">Interest Rate</label>
-      </div>
-      <div class="col-sm-2">
-        <div class="input-group">
-          <input class="form-control" type="number" placeholder="0" min="0.01" step="any" name="annualInterestRate"
-            required/>
-          <div class="input-group-append">
-            <div class="input-group-text">% Per Year</div>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <label for="numberOfPeriods" class="col-form-label">Number of Periods</label>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group">
+            <input class="form-control" placeholder="0" type="number" min="0" name="numberOfPeriods"
+              required/>
+            <div class="input-group-append">
+              <div class="input-group-text">Years</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="form-group row mb-4">
-      <div class="col-sm-2 offset-3 text-right">
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <label for="annualInterestRate" class="col-form-label">Interest Rate</label>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group">
+            <input class="form-control" type="number" placeholder="0" min="0.01" step="any" name="annualInterestRate"
+              required/>
+            <div class="input-group-append">
+              <div class="input-group-text">% Per Year</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-3">
-        <label class="col-form-label-lg">Interest Amount</label>
+      <div class="form-group row">
+        <div class="col-sm-2 offset-3 text-right">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </div>
-      <div class="col-sm-2">
-        <input class="form-control text-left" id="output" type="text" placeholder="$0" readonly>
+      <div class="form-group row pt-3">
+        <div class="col-sm-3">
+          <label class="col-form-label-lg">Interest Amount</label>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input class="form-control text-left" id="output" type="text" placeholder="0.00"
+              readonly>
+          </div>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
@@ -120,17 +134,29 @@
       const interestRatePerPeriod = annualInterestRate / 12;
       const numberOfPeriodsTimesTwelve = numberOfPeriods * 12;
 
-      let interest = 0;
-      let balence = initialInvestmentAmount;
+      let balence = parseFloat(initialInvestmentAmount);
       for (i = 0; i < numberOfPeriodsTimesTwelve; i++) {
-        interest += (balence * interestRatePerPeriod);
+        balence += (balence * interestRatePerPeriod);
       }
 
-      interest.toFixed(2);
-
-      document.getElementById("output").value = "$" + interest;
+      balence = balence.toFixed(2);
+      document.getElementById("output").value = balence;
       return false;
     }
+
+    function isNumberKey(e) {
+      var charCode = (e.which) ? e.which : event.keyCode
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46)
+        return false;
+      return true;
+    }
+
+    $('input').on('keypress', function (e) {
+      if (!isNumberKey(e.originalEvent)) {
+        return false;
+      }
+      else return true;
+    });
 
   </script>
 </body>

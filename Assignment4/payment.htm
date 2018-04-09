@@ -17,16 +17,17 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="/">Assignment 4</a>
+      <a class="navbar-brand" href="./index.htm">
+        <img src="images/unr-block-logo.png">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link active" href="./index.htm">Home
-              <span class="sr-only">(current)</span>
+          <li class="nav-item">
+            <a class="nav-link" href="./index.htm">Home
             </a>
           </li>
           <li class="nav-item">
@@ -35,8 +36,9 @@
           <li class="nav-item">
             <a class="nav-link" href="./compoundInterest.htm">Compound Interest</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="./payment.htm">Payment</a>
+            <span class="sr-only">(current)</span>
           </li>
         </ul>
       </div>
@@ -89,17 +91,23 @@
           </div>
         </div>
       </div>
-      <div class="form-group row mb-4">
+      <div class="form-group row">
         <div class="col-sm-2 offset-3 text-right">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row pt-3">
         <div class="col-sm-3">
           <label class="col-form-label-lg">Payment amount</label>
         </div>
         <div class="col-sm-2">
-          <input class="form-control text-left" id="output" type="text" placeholder="$0" readonly>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input class="form-control text-left" id="output" type="text" placeholder="0.00"
+              readonly>
+          </div>
         </div>
       </div>
     </form>
@@ -107,36 +115,6 @@
 
 
   <script>
-
-    function isNumberKey(evt) {
-      console.log(evt);
-      var charCode = (evt.which) ? evt.which : event.keyCode
-      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46)
-        return false;
-      return true;
-    }
-
-    // Catch all events related to changes
-    $('input').on('keypress', function (event) {
-      console.log(event);
-      if (!isNumberKey(event.originalEvent)) {
-        return false;
-      }
-      else return true;
-    });
-
-
-
-    function round(number, precision) {
-      var shift = function (number, precision, reverseShift) {
-        if (reverseShift) {
-          precision = -precision;
-        }
-        numArray = ("" + number).split("e");
-        return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
-      };
-      return shift(Math.round(shift(number, precision, false)), precision, true);
-    } /* referenced from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round */
 
     var form = document.payment;
     form.addEventListener('submit', calculateCompoundInterest, false);
@@ -147,20 +125,43 @@
       }
       e.returnValue = false;
 
-      const initialLoanAmount = document.payment.initialLoanAmount.value;
+      const initialLoanAmount = document.payment.initialLoanAmount.value * 1;
       const numberOfPeriods = document.payment.numberOfPeriods.value;
-      const annualInterestRate = document.payment.annualInterestRate.value / 100;
+      const annualInterestRate = document.payment.annualInterestRate.value;
 
-      const ratePerPeriod = annualInterestRate / numberOfPeriods
+      const numberOfMonthlyPeriods = numberOfPeriods * 12;
+      const monthlyInterestRate = annualInterestRate / 12;
 
-      let payment = (ratePerPeriod * initialLoanAmount) / (1 - Math.pow((1 + ratePerPeriod), -numberOfPeriods));
+      const ratePerPeriod = (annualInterestRate / 100) / 12;
 
-      payment = round(payment, 2);
+      let payment = (ratePerPeriod * initialLoanAmount) / (1 - Math.pow((1 + ratePerPeriod), (numberOfMonthlyPeriods * -1)));
 
-      document.getElementById("output").value = '$' + payment;
+      console.log('ratePerPeriod', ratePerPeriod);
+      console.log('initialLoanAmount', initialLoanAmount);
+      console.log('monthlyInterestRate', monthlyInterestRate);
+      console.log('numberOfMonthlyPeriods', numberOfMonthlyPeriods);
+      console.log('payment', payment);
+
+      payment = payment.toFixed(2);
+
+      document.getElementById("output").value = + payment;
       return false;
     }
 
+    function isNumberKey(e, value, step) {
+      console.log(e, value, step);
+      var charCode = (e.which) ? e.which : e.keyCode
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && (charCode !== 46))
+        return false;
+      return true;
+    }
+
+    $('input').on('keypress', function (e) {
+      if (!isNumberKey(e)) {
+        return false;
+      }
+      else return true;
+    });
 
   </script>
 </body>

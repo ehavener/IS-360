@@ -1,9 +1,9 @@
 body {
-  background-color: #FFFFFF;
+  background-color: #fff;
 }
 
 nav {
-  background-color: #003366;
+  background-color: #036;
 }
 
 .navbar-nav a {
@@ -11,9 +11,20 @@ nav {
 }
 
 .navbar-nav a:hover {
-  color: #003366;
+  color: #036;
 }
 
 .navbar-nav li:hover {
-  /*background-color: white; ??? */
+  background-color: white;
+}
+
+.navbar-nav li:hover a {
+  color: #036 !important;
+}
+
+input[readonly]:focus {
+  border: 1px solid #ced4da;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 0 #495057;
 }
