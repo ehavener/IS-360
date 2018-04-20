@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Home | Assignment 5</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./vendor/css/reset.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <ul>
+        <li>
+          <img src="./images/unr-block-logo.png">
+        </li>
+        <li>
+          <a href="./index.html">
+            Index
+          </a>
+        </li>
+        <li>
+          <a href="./payment.html">
+            Payment
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <div class="left-col">
+        <form name="payment">
+          <label for="initialLoanAmount" class="col-form-label">Initial Loan Amount ($)</label>
+          <input id="initialLoanAmount" class="form-control" placeholder="$0.00" type="number"
+            min="0.01" step="any" name="initialLoanAmount" required/>
+
+          <label for="annualInterestRate" class="col-form-label">Interest Rate (%)</label>
+          <input id="annualInterestRate" class="form-control" type="number" placeholder="0%"
+            min="0.01" step="any" name="annualInterestRate" required/>
+
+          <label for="numberOfPeriods" class="col-form-label">Number of Periods (Yr)</label>
+          <input id="numberOfPeriods" class="form-control" placeholder="0 Yr" type="number"
+            min="0" name="numberOfPeriods" required/>
+
+          <button type="submit">Submit</button>
+
+          <label for="output">Payment Amount ($)</label>
+          <input class="form-control" id="output" type="text" placeholder="$0.00" readonly>
+        </form>
+      </div>
+      <div class="left-col">
+        <table id="output-table">
+          <thead>
+            <tr>
+              <th>Beg. Balance</th>
+              <th>Payment</th>
+              <th>Interest</th>
+              <th>Principal</th>
+              <th>Balance</th>
+              <th>Period</th>
+            </tr>
+          </thead>
+          <tbody id="output-tbody">
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </header>
+
+  <script>
+    var form = document.payment;
+    form.addEventListener('submit', calculateCompoundInterest, false);
+
+    function calculateCompoundInterest(e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      e.returnValue = false;
+
+      const initialLoanAmount = document.payment.initialLoanAmount.value * 1;
+      const numberOfPeriods = document.payment.numberOfPeriods.value;
+      const annualInterestRate = document.payment.annualInterestRate.value;
+
+      const numberOfMonthlyPeriods = numberOfPeriods * 12;
+      const monthlyInterestRate = annualInterestRate / 12;
+
+      const ratePerPeriod = annualInterestRate / 100 / 12;
+
+      let payment =
+        ratePerPeriod *
+        initialLoanAmount /
+        (1 - Math.pow(1 + ratePerPeriod, numberOfMonthlyPeriods * -1));
+      payment = payment.toFixed(2);
+
+      resetTable();
+      populateTable(initialLoanAmount, payment, monthlyInterestRate, numberOfMonthlyPeriods);
+
+      console.log('ratePerPeriod', ratePerPeriod);
+      console.log('initialLoanAmount', initialLoanAmount);
+      console.log('monthlyInterestRate', monthlyInterestRate);
+      console.log('numberOfMonthlyPeriods', numberOfMonthlyPeriods);
+      console.log('payment', payment);
+
+      document.getElementById('output').value = + payment;
+
+      return false;
+    }
+
+    function isNumberKey(e, value, step) {
+      console.log(e, value, step);
+      var charCode = e.which ? e.which : e.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46)
+        return false;
+      return true;
+    }
+
+    $('input').on('keypress', function (e) {
+      if (!isNumberKey(e)) {
+        return false;
+      } else return true;
+    });
+
+    function resetTable() {
+      $("#output-table tbody tr").remove();
+    }
+
+    function populateTable(loanAmount, payment, monthlyInterestRate, numberOfMonthlyPeriods) {
+      let remBalence = loanAmount;
+      let table = document.getElementById('output-tbody');
+
+      for (var period = 1; period <= numberOfMonthlyPeriods; period++) {
+        let row = table.insertRow(table.rows.length);
+
+        let interest = (loanAmount * monthlyInterestRate) / 100;
+
+        let principal = payment - interest;
+
+        remBalence = remBalence - principal;
+
+        interest = interest.toFixed(2);
+        principal = principal.toFixed(2);
+        remBalence = remBalence.toFixed(2);
+
+        row.insertCell(0).appendChild(document.createTextNode('$' + loanAmount));
+        row.insertCell(1).appendChild(document.createTextNode('$' + payment));
+        row.insertCell(2).appendChild(document.createTextNode('$' + interest));
+        row.insertCell(3).appendChild(document.createTextNode('$' + principal));
+        row.insertCell(4).appendChild(document.createTextNode('$' + remBalence));
+        row.insertCell(5).appendChild(document.createTextNode(period));
+
+        loanAmount = remBalence;
+      }
+    }
+  </script>
+</body>
+
+</html>
